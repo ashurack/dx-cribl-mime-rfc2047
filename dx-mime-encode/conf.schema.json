@@ -1,0 +1,100 @@
+{
+  "title": "",
+  "type": "object",
+  "properties": {
+    "processItems": {
+      "title": "Encode Fields",
+      "description": "Fields to encode and copy the encoded value to a new field",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["srcField", "dstField"],
+        "properties": {
+          "srcField": {
+            "type": "string",
+            "title": "Source Field",
+            "description": "Name of the field to encode",
+            "pattern": "^(?:'[^']*'|[A-Za-z0-9_]+)$",
+            "errorMessage": {
+              "pattern": "Fields whose names include non-alphanumeric characters must be encased in single quotes"
+            }
+          },
+          "dstField": {
+            "type": "string",
+            "title": "Destination Field",
+            "description": "Name of the field to create/update",
+            "allOf": [
+              {
+                "pattern": "^(?!['\"]?(?:__channel|__cloneCount|__criblEventType|__ctrlFields|__FIN|__final|__hecToken|__inputId|__isBroken|__packId|__raw|__srcIpPort|cribl_breaker|cribl_pipe|cribl_route)['\"]?$).*$",
+                "errorMessage": "The destination field name cannot be a Cribl internal field"
+              },
+              {
+                "pattern": "^(?:'[^']*'|[A-Za-z0-9_]+)$",
+                "errorMessage": {
+                  "pattern": "Fields whose names include non-alphanumeric characters must be encased in single quotes."
+                }
+              }
+            ]
+          },
+          "encodingType": {
+            "type": "string",
+            "enum": ["q", "b"],
+            "enumNames": ["Quoted-Printable", "Base64"],
+            "default": "q"
+          },
+          "override": {
+            "type": "boolean",
+            "default": true,
+            "description": "No to convert the destination field to an array and append to it and Yes to replace it"
+          },
+          "disabled": {
+            "type": "boolean",
+            "default": false,
+            "description": "Set to No to disable this item"
+          }
+        }
+      }
+    },
+    "enableCache": {
+      "type": "boolean",
+      "title": "Enable Cache",
+      "description": "Caching may improve performance in certain situations. Yes to enable cache for encoded values",
+      "default": false
+    }
+  },
+  "dependencies": {
+    "enableCache": {
+      "oneOf": [
+        {
+          "properties": {
+            "enableCache": {
+              "const": false
+            }
+          }
+        },
+        {
+          "properties": {
+            "enableCache": {
+              "const": true
+            },
+            "cacheTTL": {
+              "type": "number",
+              "title": "Cache time to live (minutes)",
+              "description": "How frequently to expire and refetch the encode cache.",
+              "default": 30,
+              "minimum": 1
+            },
+            "maxCacheSize": {
+              "type": "number",
+              "title": "Maximum cache size",
+              "default": 5000,
+              "description": "The maximum number of encoded values to be cached locally. Leave at default, unless you understand the implications of changing.",
+              "maximum": 100000
+            }
+          },
+          "required": ["cacheTTL", "maxCacheSize"]
+        }
+      ]
+    }
+  }
+}

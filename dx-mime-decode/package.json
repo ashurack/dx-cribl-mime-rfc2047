@@ -1,0 +1,11 @@
+{
+  "name": "dx-mime-decode",
+  "version": "0.0.6",
+  "description": "MIME Decode",
+  "main": "index.js",
+  "author": "Alan Shurack (ashurack@qmulos.com)",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "libmime": "^5.3.7"
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "processItems": {
+    "ui:field": "Table",
+    "items": {
+      "srcField": {
+        "ui:options": {
+          "columnWidth": "30%"
+        },
+        "ui:placeholder": "Source field name"
+      },
+      "dstField": {
+        "ui:options": {
+          "columnWidth": "30%"
+        },
+        "ui:placeholder": "Destination field name"
+      },
+      "encodingType": {
+        "ui:title": "Encoding",
+        "ui:options": {
+          "columnWidth": "30%"
+        }
+      },
+      "override": {
+        "ui:title": "Override",
+        "ui:options": {
+          "columnWidth": "100px",
+          "inverted": false
+        }
+      },
+      "disabled": {
+        "ui:title": "Enabled",
+        "ui:options": {
+          "columnWidth": "90px",
+          "inverted": true
+        }
+      }
+    }
+  },
+  "ui:options": {
+    "groups": {
+      "windowType": {
+        "title": "Advanced Settings",
+        "collapsed": true,
+        "properties": [
+          "enableCache",
+          "cacheTTL",
+          "maxCacheSize"
+        ]
+      }
+    }
+  },
+  "cacheTTL": {
+    "ui:options": {
+      "width": "50%",
+      "inline": true
+    }
+  },
+  "maxCacheSize": {
+    "ui:options": {
+      "width": "50%",
+      "inline": true
+    }
+  }
+}
