@@ -4,7 +4,7 @@
   "description": "MIME Encode",
   "main": "index.js",
   "author": "Alan Shurack (ashurack@qmulos.com)",
-  "license": "Apache-2.0",
+  "license": "MIT",
   "dependencies": {
     "libmime": "^5.3.7"
   }
