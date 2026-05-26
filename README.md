@@ -4,7 +4,7 @@ Cribl functions to encode/decode [RFC 2047](https://datatracker.ietf.org/doc/htm
 ![Screenshot](docs/images/Screenshot01.png)
 
 ## Description
-Cribl does not support native encoding/decoding of [RFC 2047](https://datatracker.ietf.org/doc/html/rfc2047).  A feature request has been filed under REQUEST-237 (2025-02-11).
+Cribl did not support native encoding/decoding of [RFC 2047](https://datatracker.ietf.org/doc/html/rfc2047) when this was created. The feature request REQUEST-237 (2025-02-11) has been completed as part of [Cribl Stream 4.15.0](https://docs.cribl.io/stream/release-notes/release-v4150/#experience-improvements) via [C.Decode.mime()](https://docs.cribl.io/stream/expressions-encode-decode/#cdecodemime) and [C.Encode.mime()](https://docs.cribl.io/stream/expressions-encode-decode/#cencodemime).
 
 ## Installation
 ### Single Instance
