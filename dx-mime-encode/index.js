@@ -9,7 +9,7 @@ const logger = C.util.getLogger('func:dx-mime-encode');
 
 exports.disabled = 0;
 exports.name = 'MIME Encode (RFC 2047)';
-exports.version = '0.0.5';
+exports.version = '0.0.7';
 exports.group = 'MIME Functions';
 
 // NOTE: Skip/ignore config with a dstField of {value}. Also prevented in UI via conf.schema.json
