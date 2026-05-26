@@ -25,10 +25,14 @@
             "description": "Name of the field to create/update",
             "allOf": [
               {
+                "type": "string",
                 "pattern": "^(?!['\"]?(?:__channel|__cloneCount|__criblEventType|__ctrlFields|__FIN|__final|__hecToken|__inputId|__isBroken|__packId|__raw|__srcIpPort|cribl_breaker|cribl_pipe|cribl_route)['\"]?$).*$",
-                "errorMessage": "The destination field name cannot be a Cribl internal field"
+                "errorMessage": {
+                  "pattern": "The destination field name cannot be a Cribl internal field"
+                }
               },
               {
+                "type": "string",
                 "pattern": "^(?:'[^']*'|[A-Za-z0-9_]+)$",
                 "errorMessage": {
                   "pattern": "Fields whose names include non-alphanumeric characters must be encased in single quotes."
